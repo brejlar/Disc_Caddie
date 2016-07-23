@@ -12,13 +12,13 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
 
 	private final String PATH = "/users";
-	
+
 	@Autowired
 	private DataSource dataSource;
-	
-    @RequestMapping(PATH)
-    public String users() {
-        return "Users page";
-    }
-	
+
+	@RequestMapping(PATH)
+	public String users() {
+		return "Users page";
+	}
+
 }

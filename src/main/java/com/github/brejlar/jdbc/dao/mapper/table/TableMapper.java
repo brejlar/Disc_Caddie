@@ -5,5 +5,5 @@ import java.util.Map;
 public interface TableMapper {
 
 	public Map<String, Object> getMapForTableValues(Object object);
-	
+
 }

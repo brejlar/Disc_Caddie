@@ -14,15 +14,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @ComponentScan("com.github.brejlar")
 public class DiscCaddieApplication {
-    @Autowired
-    private DataSource dataSource;
+	@Autowired
+	private DataSource dataSource;
 
-    @RequestMapping("/")
-    public String hello() {
-        return new JdbcTemplate(dataSource).queryForObject("select msg from messages where id=?", String.class, 1);
-    }
+	@RequestMapping("/")
+	public String hello() {
+		return new JdbcTemplate(dataSource).queryForObject("select msg from messages where id=?", String.class, 1);
+	}
 
-    public static void main(String[] args) {
-        SpringApplication.run(DiscCaddieApplication.class, args);
-    }
+	public static void main(String[] args) {
+		SpringApplication.run(DiscCaddieApplication.class, args);
+	}
 }

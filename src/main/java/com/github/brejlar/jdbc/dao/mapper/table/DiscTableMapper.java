@@ -11,11 +11,14 @@ public class DiscTableMapper implements TableMapper {
 	public Map<String, Object> getMapForTableValues(Object object) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		Disc disc = (Disc) object;
-		
+
 		map.put("disc_id", disc.getDiscId());
 		map.put("model", disc.getModel());
 		map.put("owner_id", disc.getOwnerId());
-		
+		map.put("brand", disc.getBrand());
+		map.put("weight", disc.getWeight());
+		map.put("description_text", disc.getDescriptionText());
+
 		return map;
 	}
 

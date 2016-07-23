@@ -22,28 +22,29 @@ public class DiscDaoImpl implements DiscDao {
 	private final String GET_ALL_DISCS = "SELECT * FROM DISCS WHERE OWNER_ID='%s'";
 	private final String GET_DISC = "SELECT * FROM DISCS WHERE DISC_ID='%s' AND OWNER_ID='%s'";
 	private final String DELETE_DISC = "DELETE FROM DISCS WHERE DISC_ID='%s' AND OWNER_ID='%s'";
-	private final String INSERT_DISC = "INSERT INTO DISCS VALUES(:disc_id,:model,:owner_id)";
-	
+	private final String INSERT_DISC = "INSERT INTO DISCS VALUES(:disc_id,:model,:owner_id,:brand,:description_text,:weight)";
+
 	private static final Logger LOGGER = LoggerFactory.getLogger(DiscDaoImpl.class);
-	
+
 	@Autowired
 	private DataSource dataSource;
-	
+
 	@Override
 	public int insertDisc(Disc disc) {
-    	LOGGER.info("DiscDAO insertDisc: " + disc);
-    	Integer result = (Integer) new NamedParameterJdbcTemplate(dataSource).execute(INSERT_DISC, new DiscTableMapper().getMapForTableValues(disc), new InsertDiscPreparedStatement());
-    	LOGGER.info("DiscDAO insertDisc result: " + result);
-    	return result == null ? 0 : result;
+		LOGGER.info("DiscDAO insertDisc: " + disc);
+		Integer result = (Integer) new NamedParameterJdbcTemplate(dataSource).execute(INSERT_DISC,
+				new DiscTableMapper().getMapForTableValues(disc), new InsertDiscPreparedStatement());
+		LOGGER.info("DiscDAO insertDisc result: " + result);
+		return result == null ? 0 : result;
 	}
 
 	@Override
 	public int deleteDisc(String playerId, String discId) {
 		LOGGER.info("deleteDisc: playerId[" + playerId + "] discId[" + discId + "]");
-    	String query = String.format(DELETE_DISC, discId, playerId);
-    	LOGGER.info("deleteDisc query: " + query);
-    	int result = new JdbcTemplate(dataSource).update(query);
-    	return result;
+		String query = String.format(DELETE_DISC, discId, playerId);
+		LOGGER.info("deleteDisc query: " + query);
+		int result = new JdbcTemplate(dataSource).update(query);
+		return result;
 	}
 
 	@Override
@@ -60,7 +61,7 @@ public class DiscDaoImpl implements DiscDao {
 		LOGGER.info("DiscDAO getAllDiscs query: " + query);
 		List<Disc> discs = new JdbcTemplate(dataSource).query(query, new DiscRowMapper());
 		return discs;
-		
+
 	}
 
 }

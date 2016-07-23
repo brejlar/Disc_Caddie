@@ -15,7 +15,7 @@ public class DiscRowMapper implements RowMapper<Disc> {
 		disc.setDiscId(rs.getString("disc_id"));
 		disc.setModel(rs.getString("model"));
 		disc.setOwnerId(rs.getString("owner_id"));
-		
+
 		return disc;
 	}
 

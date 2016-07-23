@@ -7,10 +7,10 @@ import org.springframework.web.bind.annotation.RestController;
 public class DisallowedController {
 
 	private final String PATH = "/disallowed";
-	
-    @RequestMapping(PATH)
-    public String discs() {
-        return "Nope";
-    }
-	
+
+	@RequestMapping(PATH)
+	public String discs() {
+		return "Nope";
+	}
+
 }

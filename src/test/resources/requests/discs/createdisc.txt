@@ -1,0 +1,1 @@
+{"discId":"disc3", "model":"claymore", "userId":"user0", "brand":"Latitude 64", "weight":"175", "descriptionText":"claymore text"}
