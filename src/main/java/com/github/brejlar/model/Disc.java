@@ -1,17 +1,28 @@
 package com.github.brejlar.model;
 
-import java.util.Date;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+@Entity
+@Table(name="disc")
 public class Disc {
 
-	private String discId;
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private Long discId;
 	private String model;
 	private String brand;
 	private String descriptionText;
 	private String ownerId;
 	private Integer weight;
+	
+	private DiscStyle style;
 	
 	public Disc() {
 		super();
@@ -33,11 +44,11 @@ public class Disc {
 		this.descriptionText = descriptionText;
 	}
 	
-	public String getDiscId() {
-		return String.valueOf(new Date().getTime());
+	public Long getDiscId() {
+		return discId;
 	}
 
-	public void setDiscId(String discId) {
+	public void setDiscId(Long discId) {
 		this.discId = discId;
 	}
 
@@ -65,14 +76,18 @@ public class Disc {
 		this.weight = weight;
 	}
 
-	@JsonIgnore
-	public Object[] getFields() {
-		return new Object[] { getDiscId(), getModel(), getOwnerId(), getBrand(), getDescriptionText(), getWeight() };
+	public DiscStyle getStyle() {
+		return style;
+	}
+
+	public void setStyle(String style) {
+		this.style = DiscStyle.parse(style);
 	}
 
 	@Override
 	public String toString() {
-		return "Disc [discId=" + discId + ", model=" + model + ", ownerId=" + ownerId + ", brand=" + brand + ", weight= " + weight + ", descriptionText=" + descriptionText + "]";
+		return "Disc [discId=" + discId + ", model=" + model + ", brand=" + brand + ", descriptionText="
+				+ descriptionText + ", ownerId=" + ownerId + ", weight=" + weight + ", style=" + style + "]";
 	}
 
 }
