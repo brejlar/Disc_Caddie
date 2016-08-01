@@ -1,4 +1,4 @@
-package com.github.brejlar.config;
+package com.github.brejlar;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

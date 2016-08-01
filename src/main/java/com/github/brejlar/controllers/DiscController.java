@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.github.brejlar.jdbc.dao.disc.DiscRepository;
 import com.github.brejlar.model.Disc;
 
-@RequestMapping("/discs")
 @RestController
+@RequestMapping("/discs")
 public class DiscController {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(DiscController.class);
